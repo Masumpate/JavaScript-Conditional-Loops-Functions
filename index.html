@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Functions Tasks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="root"></div> <!-- All output will be added here -->
+
+    <script>
+        // Helper function to create and add results to the page
+        function addResult(title, content) {
+            const root = document.getElementById("root");
+
+            const heading = document.createElement("h2");
+            heading.innerText = title;
+            root.appendChild(heading);
+
+            const para = document.createElement("p");
+            para.innerHTML = content;
+            root.appendChild(para);
+        }
+
+        // 1. Filter out negative numbers
+        function filterNegatives(arr) {
+            return arr.filter(num => num >= 0);
+        }
+        const numbers = [-5, 3, -1, 8, 0, -9];
+        addResult("1. Filter Negative Numbers", `Input: ${numbers.join(', ')}<br>Filtered: ${filterNegatives(numbers).join(', ')}`);
+
+        // 2. Difference with 13, double if greater
+        function diffWith13(num) {
+            return num > 13 ? 2 * Math.abs(num - 13) : 13 - num;
+        }
+        const input2 = 20;
+        addResult("2. Difference with 13", `Input: ${input2} → Output: ${diffWith13(input2)}`);
+
+        // 3. Fibonacci series
+        function fibonacciSeries(n) {
+            const fib = [0, 1];
+            for (let i = 2; i < n; i++) {
+                fib.push(fib[i - 1] + fib[i - 2]);
+            }
+            return fib.slice(0, n);
+        }
+        const fibLength = 10;
+        addResult("3. Fibonacci Series", `First ${fibLength} terms: ${fibonacciSeries(fibLength).join(', ')}`);
+
+        // 4. Sum of multiples of 3 and 5 under 1000
+        function sumMultiplesOf3And5(limit) {
+            let sum = 0;
+            for (let i = 0; i < limit; i++) {
+                if (i % 3 === 0 || i % 5 === 0) {
+                    sum += i;
+                }
+            }
+            return sum;
+        }
+        addResult("4. Sum of Multiples of 3 and 5 (Under 1000)", `Sum = ${sumMultiplesOf3And5(1000)}`);
+
+        // 5. Cube of number using Function object
+        const cube = new Function("n", "return n * n * n;");
+        const input5 = 4;
+        addResult("5. Cube using Function Object", `Cube of ${input5} = ${cube(input5)}`);
+    </script>
+
+</body>
+
+</html>
